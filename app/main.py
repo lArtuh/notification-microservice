@@ -7,5 +7,9 @@ app = FastAPI()
 
 Base.metadata.create_all(bind=engine)
 
+@app.get("/")
+def root():
+    return {"message": "Notification microservice is running"}
+
 app.include_router(notifications.router,
                    prefix="/notifications", tags=["Notifications"])
